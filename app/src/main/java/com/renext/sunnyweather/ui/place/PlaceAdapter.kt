@@ -22,8 +22,8 @@ class PlaceAdapter(
         val view = LayoutInflater.from(parent.context).inflate(R.layout.place_item, parent, false)
         val holder = ViewHolder(view)
         holder.itemView.setOnClickListener {
-            val position = holder.getBindingAdapterPosition()
-            val place = placeList.get(position)
+            val position = holder.bindingAdapterPosition
+            val place = placeList[position]
             val activity = fragment.activity
         }
         return holder
