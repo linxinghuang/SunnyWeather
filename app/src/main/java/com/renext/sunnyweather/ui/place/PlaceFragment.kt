@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.fragment_place.*
 
 class PlaceFragment : Fragment() {
 
-    val viewModel by lazy { ViewModelProvider(this).get(PlaceViewModel::class.java) }
+    private val viewModel by lazy { ViewModelProvider(this).get(PlaceViewModel::class.java) }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,6 +31,7 @@ class PlaceFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         val layoutManager = LinearLayoutManager(activity)
         val adapter = PlaceAdapter(this, viewModel.placeList)
+        recyclerView.layoutManager = layoutManager
         recyclerView.adapter = adapter
         searchPlaceEdit.addTextChangedListener { editable ->
             val content = editable.toString()
@@ -43,22 +44,8 @@ class PlaceFragment : Fragment() {
                 adapter.notifyDataSetChanged()
             }
         }
-        searchPlaceEdit.addTextChangedListener(object:TextWatcher{
-            override fun afterTextChanged(s: Editable?) {
-                TODO("Not yet implemented")
-            }
 
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                TODO("Not yet implemented")
-            }
-
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                TODO("Not yet implemented")
-            }
-        })
-
-        viewModel.placeLiveData.observe(this, Observer { result ->
+        viewModel.placeLiveData.observe(viewLifecycleOwner, Observer { result ->
             val places = result.getOrNull()
             if (places != null) {
                 recyclerView.visibility = View.VISIBLE

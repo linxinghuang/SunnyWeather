@@ -1,11 +1,8 @@
 package com.renext.sunnyweather.logic
 
 import androidx.lifecycle.liveData
-import com.renext.sunnyweather.logic.model.Place
 import com.renext.sunnyweather.logic.network.SunnyWeatherNetWork
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
-import kotlinx.coroutines.coroutineScope
 import kotlin.coroutines.CoroutineContext
 
 object Repository {
