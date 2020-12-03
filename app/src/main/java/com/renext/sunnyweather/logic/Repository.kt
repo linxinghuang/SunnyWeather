@@ -1,6 +1,8 @@
 package com.renext.sunnyweather.logic
 
 import androidx.lifecycle.liveData
+import com.renext.sunnyweather.logic.dao.PlaceDao
+import com.renext.sunnyweather.logic.model.Place
 import com.renext.sunnyweather.logic.model.Weather
 import com.renext.sunnyweather.logic.network.SunnyWeatherNetWork
 import kotlinx.coroutines.Dispatchers
@@ -45,6 +47,12 @@ object Repository {
             }
         }
     }
+
+    fun savePlace(place: Place) = PlaceDao.savePlace(place)
+
+    fun getSavedPlace() = PlaceDao.getSavedPlace()
+
+    fun isPlaceSaved() = PlaceDao.isPlaceSaved()
 
     private fun <T> fire(context: CoroutineContext, block: suspend () -> Result<T>) =
         liveData(context) {
