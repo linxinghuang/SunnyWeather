@@ -39,17 +39,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="start"
+        android:background="@color/colorPrimary"
         android:clickable="true"
-        android:focusable="true"
-        android:background="@color/colorPrimary">
+        android:focusable="true">
 
         <fragment
             android:id="@+id/placeFragment"
             android:name="com.renext.sunnyweather.ui.place.PlaceFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="25dp"/>
+            android:layout_marginTop="25dp" />
 
     </FrameLayout>
-
 </androidx.drawerlayout.widget.DrawerLayout>
